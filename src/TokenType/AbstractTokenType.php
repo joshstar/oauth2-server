@@ -9,10 +9,10 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace League\OAuth2\Server\TokenType;
+namespace LeagueFork\OAuth2\Server\TokenType;
 
-use League\OAuth2\Server\AbstractServer;
-use League\OAuth2\Server\Entity\SessionEntity;
+use LeagueFork\OAuth2\Server\AbstractServer;
+use LeagueFork\OAuth2\Server\Entity\SessionEntity;
 
 abstract class AbstractTokenType
 {
@@ -26,14 +26,14 @@ abstract class AbstractTokenType
     /**
      * Server
      *
-     * @var \League\OAuth2\Server\AbstractServer $server
+     * @var \LeagueFork\OAuth2\Server\AbstractServer $server
      */
     protected $server;
 
     /**
      * Server
      *
-     * @var \League\OAuth2\Server\Entity\SessionEntity $session
+     * @var \LeagueFork\OAuth2\Server\Entity\SessionEntity $session
      */
     protected $session;
 

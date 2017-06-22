@@ -1,8 +1,8 @@
 <?php
 
-namespace LeagueTests\Stubs;
+namespace LeagueForkTests\Stubs;
 
-class StubAbstractGrant extends \League\OAuth2\Server\Grant\AbstractGrant
+class StubAbstractGrant extends \LeagueFork\OAuth2\Server\Grant\AbstractGrant
 {
     protected $responseType = 'foobar';
 

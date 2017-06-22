@@ -9,9 +9,9 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace League\OAuth2\Server\Storage;
+namespace LeagueFork\OAuth2\Server\Storage;
 
-use League\OAuth2\Server\AbstractServer;
+use LeagueFork\OAuth2\Server\AbstractServer;
 
 /**
  * Storage interface
@@ -21,7 +21,7 @@ interface StorageInterface
     /**
      * Set the server
      *
-     * @param \League\OAuth2\Server\AbstractServer $server
+     * @param \LeagueFork\OAuth2\Server\AbstractServer $server
      */
     public function setServer(AbstractServer $server);
 }

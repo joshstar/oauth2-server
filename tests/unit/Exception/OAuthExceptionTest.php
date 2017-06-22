@@ -1,8 +1,8 @@
 <?php
 
-namespace LeagueTests;
+namespace LeagueForkTests;
 
-use League\OAuth2\Server\Exception\OAuthException;
+use LeagueFork\OAuth2\Server\Exception\OAuthException;
 
 class OAuthExceptionTest extends \PHPUnit_Framework_TestCase
 {

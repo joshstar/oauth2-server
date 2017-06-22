@@ -12,7 +12,7 @@ $router = new \Orno\Route\RouteCollection();
 $router->setStrategy(\Orno\Route\RouteStrategyInterface::RESTFUL_STRATEGY);
 
 // Set up the OAuth 2.0 authorization server
-$server = new \League\OAuth2\Server\AuthorizationServer();
+$server = new \LeagueFork\OAuth2\Server\AuthorizationServer();
 $server->setSessionStorage(new Storage\SessionStorage());
 $server->setAccessTokenStorage(new Storage\AccessTokenStorage());
 $server->setRefreshTokenStorage(new Storage\RefreshTokenStorage());
@@ -20,10 +20,10 @@ $server->setClientStorage(new Storage\ClientStorage());
 $server->setScopeStorage(new Storage\ScopeStorage());
 $server->setAuthCodeStorage(new Storage\AuthCodeStorage());
 
-$authCodeGrant = new \League\OAuth2\Server\Grant\AuthCodeGrant();
+$authCodeGrant = new \LeagueFork\OAuth2\Server\Grant\AuthCodeGrant();
 $server->addGrantType($authCodeGrant);
 
-$refrehTokenGrant = new \League\OAuth2\Server\Grant\RefreshTokenGrant();
+$refrehTokenGrant = new \LeagueFork\OAuth2\Server\Grant\RefreshTokenGrant();
 $server->addGrantType($refrehTokenGrant);
 
 // Routing setup
@@ -97,7 +97,7 @@ try {
     // A failed response
     $response = $e->getJsonResponse();
     $response->setContent(json_encode(['status_code' => $e->getStatusCode(), 'message' => $e->getMessage()]));
-} catch (\League\OAuth2\Server\Exception\OAuthException $e) {
+} catch (\LeagueFork\OAuth2\Server\Exception\OAuthException $e) {
     $response = new Response(json_encode([
         'error'     =>  $e->errorType,
         'message'   =>  $e->getMessage(),

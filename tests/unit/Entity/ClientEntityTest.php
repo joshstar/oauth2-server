@@ -1,15 +1,15 @@
 <?php
 
-namespace LeagueTests\Entity;
+namespace LeagueForkTests\Entity;
 
-use League\OAuth2\Server\Entity\ClientEntity;
+use LeagueFork\OAuth2\Server\Entity\ClientEntity;
 use Mockery as M;
 
 class ClientEntityTest extends \PHPUnit_Framework_TestCase
 {
     public function testSetGet()
     {
-        $server = M::mock('League\OAuth2\Server\AbstractServer');
+        $server = M::mock('LeagueFork\OAuth2\Server\AbstractServer');
         $client = (new ClientEntity($server))->hydrate([
             'id' => 'foobar',
             'secret' => 'barfoo',

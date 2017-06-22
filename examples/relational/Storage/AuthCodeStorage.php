@@ -3,10 +3,10 @@
 namespace RelationalExample\Storage;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
-use League\OAuth2\Server\Entity\AuthCodeEntity;
-use League\OAuth2\Server\Entity\ScopeEntity;
-use League\OAuth2\Server\Storage\AbstractStorage;
-use League\OAuth2\Server\Storage\AuthCodeInterface;
+use LeagueFork\OAuth2\Server\Entity\AuthCodeEntity;
+use LeagueFork\OAuth2\Server\Entity\ScopeEntity;
+use LeagueFork\OAuth2\Server\Storage\AbstractStorage;
+use LeagueFork\OAuth2\Server\Storage\AuthCodeInterface;
 
 class AuthCodeStorage extends AbstractStorage implements AuthCodeInterface
 {

@@ -43,17 +43,16 @@
 		}
 	],
 	"replace": {
-		"lncd/oauth2": "*",
-		"league/oauth2server": "*"
+		"lncd/oauth2": "*"
 	},
 	"autoload": {
 		"psr-4": {
-			"League\\OAuth2\\Server\\": "src/"
+			"LeagueFork\\OAuth2\\Server\\": "src/"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"LeagueTests\\": "tests/unit/"
+			"LeagueForkTests\\": "tests/unit/"
 		}
 	}
 }

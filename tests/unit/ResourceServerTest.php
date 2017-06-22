@@ -1,25 +1,25 @@
 <?php
 
-namespace LeagueTests;
+namespace LeagueForkTests;
 
-use League\OAuth2\Server\Entity\AccessTokenEntity;
-use League\OAuth2\Server\Entity\ClientEntity;
-use League\OAuth2\Server\Entity\ScopeEntity;
-use League\OAuth2\Server\Entity\SessionEntity;
-use League\OAuth2\Server\ResourceServer;
+use LeagueFork\OAuth2\Server\Entity\AccessTokenEntity;
+use LeagueFork\OAuth2\Server\Entity\ClientEntity;
+use LeagueFork\OAuth2\Server\Entity\ScopeEntity;
+use LeagueFork\OAuth2\Server\Entity\SessionEntity;
+use LeagueFork\OAuth2\Server\ResourceServer;
 use Mockery as M;
 
 class ResourceServerTest extends \PHPUnit_Framework_TestCase
 {
     private function returnDefault()
     {
-        $sessionStorage = M::mock('League\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('setServer');
-        $accessTokenStorage = M::mock('League\OAuth2\Server\Storage\AccessTokenInterface');
+        $accessTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AccessTokenInterface');
         $accessTokenStorage->shouldReceive('setServer');
-        $clientStorage = M::mock('League\OAuth2\Server\Storage\ClientInterface');
+        $clientStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ClientInterface');
         $clientStorage->shouldReceive('setServer');
-        $scopeStorage = M::mock('League\OAuth2\Server\Storage\ScopeInterface');
+        $scopeStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ScopeInterface');
         $scopeStorage->shouldReceive('setServer');
 
         $server = new ResourceServer(
@@ -34,13 +34,13 @@ class ResourceServerTest extends \PHPUnit_Framework_TestCase
 
     public function testGetSet()
     {
-        $sessionStorage = M::mock('League\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('setServer');
-        $accessTokenStorage = M::mock('League\OAuth2\Server\Storage\AccessTokenInterface');
+        $accessTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AccessTokenInterface');
         $accessTokenStorage->shouldReceive('setServer');
-        $clientStorage = M::mock('League\OAuth2\Server\Storage\ClientInterface');
+        $clientStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ClientInterface');
         $clientStorage->shouldReceive('setServer');
-        $scopeStorage = M::mock('League\OAuth2\Server\Storage\ScopeInterface');
+        $scopeStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ScopeInterface');
         $scopeStorage->shouldReceive('setServer');
 
         $server = new ResourceServer(
@@ -53,19 +53,19 @@ class ResourceServerTest extends \PHPUnit_Framework_TestCase
 
     public function testDetermineAccessTokenMissingToken()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->setExpectedException('LeagueFork\OAuth2\Server\Exception\InvalidRequestException');
 
-        $sessionStorage = M::mock('League\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('setServer');
 
-        $accessTokenStorage = M::mock('League\OAuth2\Server\Storage\AccessTokenInterface');
+        $accessTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AccessTokenInterface');
         $accessTokenStorage->shouldReceive('setServer');
         $accessTokenStorage->shouldReceive('get')->andReturn(false);
 
-        $clientStorage = M::mock('League\OAuth2\Server\Storage\ClientInterface');
+        $clientStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ClientInterface');
         $clientStorage->shouldReceive('setServer');
 
-        $scopeStorage = M::mock('League\OAuth2\Server\Storage\ScopeInterface');
+        $scopeStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ScopeInterface');
         $scopeStorage->shouldReceive('setServer');
 
         $server = new ResourceServer(
@@ -90,17 +90,17 @@ class ResourceServerTest extends \PHPUnit_Framework_TestCase
 
     public function testIsValidNotValid()
     {
-        $sessionStorage = M::mock('League\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('setServer');
 
-        $accessTokenStorage = M::mock('League\OAuth2\Server\Storage\AccessTokenInterface');
+        $accessTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AccessTokenInterface');
         $accessTokenStorage->shouldReceive('setServer');
         $accessTokenStorage->shouldReceive('get')->andReturn(false);
 
-        $clientStorage = M::mock('League\OAuth2\Server\Storage\ClientInterface');
+        $clientStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ClientInterface');
         $clientStorage->shouldReceive('setServer');
 
-        $scopeStorage = M::mock('League\OAuth2\Server\Storage\ScopeInterface');
+        $scopeStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ScopeInterface');
         $scopeStorage->shouldReceive('setServer');
 
         $server = new ResourceServer(
@@ -110,22 +110,22 @@ class ResourceServerTest extends \PHPUnit_Framework_TestCase
             $scopeStorage
         );
 
-        $this->setExpectedException('League\OAuth2\Server\Exception\AccessDeniedException');
+        $this->setExpectedException('LeagueFork\OAuth2\Server\Exception\AccessDeniedException');
         $server->isValidRequest(false, 'foobar');
     }
 
     public function testIsValid()
     {
-        $sessionStorage = M::mock('League\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('setServer');
 
-        $accessTokenStorage = M::mock('League\OAuth2\Server\Storage\AccessTokenInterface');
+        $accessTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AccessTokenInterface');
         $accessTokenStorage->shouldReceive('setServer');
 
-        $clientStorage = M::mock('League\OAuth2\Server\Storage\ClientInterface');
+        $clientStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ClientInterface');
         $clientStorage->shouldReceive('setServer');
 
-        $scopeStorage = M::mock('League\OAuth2\Server\Storage\ScopeInterface');
+        $scopeStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ScopeInterface');
         $scopeStorage->shouldReceive('setServer');
 
         $server = new ResourceServer(
@@ -138,7 +138,7 @@ class ResourceServerTest extends \PHPUnit_Framework_TestCase
         $server->setIdKey('at');
 
         $server->addEventListener('session.owner', function ($event) {
-            $this->assertTrue($event->getSession() instanceof \League\OAuth2\Server\Entity\SessionEntity);
+            $this->assertTrue($event->getSession() instanceof \LeagueFork\OAuth2\Server\Entity\SessionEntity);
         });
 
         $accessTokenStorage->shouldReceive('get')->andReturn(
@@ -169,20 +169,20 @@ class ResourceServerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException League\OAuth2\Server\Exception\AccessDeniedException
+     * @expectedException LeagueFork\OAuth2\Server\Exception\AccessDeniedException
      */
     public function testIsValidExpiredToken()
     {
-        $sessionStorage = M::mock('League\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('setServer');
 
-        $accessTokenStorage = M::mock('League\OAuth2\Server\Storage\AccessTokenInterface');
+        $accessTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AccessTokenInterface');
         $accessTokenStorage->shouldReceive('setServer');
 
-        $clientStorage = M::mock('League\OAuth2\Server\Storage\ClientInterface');
+        $clientStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ClientInterface');
         $clientStorage->shouldReceive('setServer');
 
-        $scopeStorage = M::mock('League\OAuth2\Server\Storage\ScopeInterface');
+        $scopeStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ScopeInterface');
         $scopeStorage->shouldReceive('setServer');
 
         $server = new ResourceServer(
@@ -195,7 +195,7 @@ class ResourceServerTest extends \PHPUnit_Framework_TestCase
         $server->setIdKey('at');
 
         $server->addEventListener('session.owner', function ($event) {
-            $this->assertTrue($event->getSession() instanceof \League\OAuth2\Server\Entity\SessionEntity);
+            $this->assertTrue($event->getSession() instanceof \LeagueFork\OAuth2\Server\Entity\SessionEntity);
         });
 
         $accessTokenStorage->shouldReceive('get')->andReturn(

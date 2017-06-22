@@ -1,10 +1,10 @@
 <?php
 
-namespace LeagueTests;
+namespace LeagueForkTests;
 
-use League\OAuth2\Server\AuthorizationServer;
-use League\OAuth2\Server\Grant\GrantTypeInterface;
-use League\OAuth2\Server\Storage\ScopeInterface;
+use LeagueFork\OAuth2\Server\AuthorizationServer;
+use LeagueFork\OAuth2\Server\Grant\GrantTypeInterface;
+use LeagueFork\OAuth2\Server\Storage\ScopeInterface;
 use Mockery as M;
 
 class AuthorizationServerTest extends \PHPUnit_Framework_TestCase
@@ -18,12 +18,12 @@ class AuthorizationServerTest extends \PHPUnit_Framework_TestCase
         $server->setScopeDelimiter(',');
         $server->setAccessTokenTTL(1);
 
-        $grant = M::mock('League\OAuth2\Server\Grant\GrantTypeInterface');
+        $grant = M::mock('LeagueFork\OAuth2\Server\Grant\GrantTypeInterface');
         $grant->shouldReceive('getIdentifier')->andReturn('foobar');
         $grant->shouldReceive('getResponseType')->andReturn('foobar');
         $grant->shouldReceive('setAuthorizationServer');
 
-        $scopeStorage = M::mock('League\OAuth2\Server\Storage\ScopeInterface');
+        $scopeStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ScopeInterface');
         $scopeStorage->shouldReceive('setServer');
 
         $server->addGrantType($grant);
@@ -42,14 +42,14 @@ class AuthorizationServerTest extends \PHPUnit_Framework_TestCase
 
     public function testInvalidGrantType()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidGrantException');
+        $this->setExpectedException('LeagueFork\OAuth2\Server\Exception\InvalidGrantException');
         $server = new AuthorizationServer();
         $server->getGrantType('foobar');
     }
 
     public function testIssueAccessToken()
     {
-        $grant = M::mock('League\OAuth2\Server\Grant\GrantTypeInterface');
+        $grant = M::mock('LeagueFork\OAuth2\Server\Grant\GrantTypeInterface');
         $grant->shouldReceive('getIdentifier')->andReturn('foobar');
         $grant->shouldReceive('getResponseType')->andReturn('foobar');
         $grant->shouldReceive('setAuthorizationServer');
@@ -65,14 +65,14 @@ class AuthorizationServerTest extends \PHPUnit_Framework_TestCase
 
     public function testIssueAccessTokenEmptyGrantType()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\InvalidRequestException');
+        $this->setExpectedException('LeagueFork\OAuth2\Server\Exception\InvalidRequestException');
         $server = new AuthorizationServer();
         $this->assertTrue($server->issueAccessToken());
     }
 
     public function testIssueAccessTokenInvalidGrantType()
     {
-        $this->setExpectedException('League\OAuth2\Server\Exception\UnsupportedGrantTypeException');
+        $this->setExpectedException('LeagueFork\OAuth2\Server\Exception\UnsupportedGrantTypeException');
 
         $_POST['grant_type'] = 'foobar';
 

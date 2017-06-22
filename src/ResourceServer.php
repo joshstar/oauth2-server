@@ -9,17 +9,17 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace League\OAuth2\Server;
+namespace LeagueFork\OAuth2\Server;
 
-use League\OAuth2\Server\Entity\AccessTokenEntity;
-use League\OAuth2\Server\Exception\AccessDeniedException;
-use League\OAuth2\Server\Exception\InvalidRequestException;
-use League\OAuth2\Server\Storage\AccessTokenInterface;
-use League\OAuth2\Server\Storage\ClientInterface;
-use League\OAuth2\Server\Storage\ScopeInterface;
-use League\OAuth2\Server\Storage\SessionInterface;
-use League\OAuth2\Server\TokenType\Bearer;
-use League\OAuth2\Server\TokenType\MAC;
+use LeagueFork\OAuth2\Server\Entity\AccessTokenEntity;
+use LeagueFork\OAuth2\Server\Exception\AccessDeniedException;
+use LeagueFork\OAuth2\Server\Exception\InvalidRequestException;
+use LeagueFork\OAuth2\Server\Storage\AccessTokenInterface;
+use LeagueFork\OAuth2\Server\Storage\ClientInterface;
+use LeagueFork\OAuth2\Server\Storage\ScopeInterface;
+use LeagueFork\OAuth2\Server\Storage\SessionInterface;
+use LeagueFork\OAuth2\Server\TokenType\Bearer;
+use LeagueFork\OAuth2\Server\TokenType\MAC;
 
 /**
  * OAuth 2.0 Resource Server
@@ -29,7 +29,7 @@ class ResourceServer extends AbstractServer
     /**
      * The access token
      *
-     * @var \League\OAuth2\Server\Entity\AccessTokenEntity
+     * @var \LeagueFork\OAuth2\Server\Entity\AccessTokenEntity
      */
     protected $accessToken;
 
@@ -43,10 +43,10 @@ class ResourceServer extends AbstractServer
     /**
      * Initialise the resource server
      *
-     * @param \League\OAuth2\Server\Storage\SessionInterface     $sessionStorage
-     * @param \League\OAuth2\Server\Storage\AccessTokenInterface $accessTokenStorage
-     * @param \League\OAuth2\Server\Storage\ClientInterface      $clientStorage
-     * @param \League\OAuth2\Server\Storage\ScopeInterface       $scopeStorage
+     * @param \LeagueFork\OAuth2\Server\Storage\SessionInterface     $sessionStorage
+     * @param \LeagueFork\OAuth2\Server\Storage\AccessTokenInterface $accessTokenStorage
+     * @param \LeagueFork\OAuth2\Server\Storage\ClientInterface      $clientStorage
+     * @param \LeagueFork\OAuth2\Server\Storage\ScopeInterface       $scopeStorage
      *
      * @return self
      */
@@ -86,7 +86,7 @@ class ResourceServer extends AbstractServer
     /**
      * Gets the access token
      *
-     * @return \League\OAuth2\Server\Entity\AccessTokenEntity
+     * @return \LeagueFork\OAuth2\Server\Entity\AccessTokenEntity
      */
     public function getAccessToken()
     {
@@ -97,10 +97,10 @@ class ResourceServer extends AbstractServer
      * Checks if the access token is valid or not
      *
      * @param bool                                                $headerOnly Limit Access Token to Authorization header
-     * @param \League\OAuth2\Server\Entity\AccessTokenEntity|null $accessToken Access Token
+     * @param \LeagueFork\OAuth2\Server\Entity\AccessTokenEntity|null $accessToken Access Token
      *
-     * @throws \League\OAuth2\Server\Exception\AccessDeniedException
-     * @throws \League\OAuth2\Server\Exception\InvalidRequestException
+     * @throws \LeagueFork\OAuth2\Server\Exception\AccessDeniedException
+     * @throws \LeagueFork\OAuth2\Server\Exception\InvalidRequestException
      *
      * @return bool
      */
@@ -132,7 +132,7 @@ class ResourceServer extends AbstractServer
      *
      * @param bool $headerOnly Limit Access Token to Authorization header
      *
-     * @throws \League\OAuth2\Server\Exception\InvalidRequestException Thrown if there is no access token presented
+     * @throws \LeagueFork\OAuth2\Server\Exception\InvalidRequestException Thrown if there is no access token presented
      *
      * @return string
      */

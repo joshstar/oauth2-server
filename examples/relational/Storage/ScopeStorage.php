@@ -3,9 +3,9 @@
 namespace RelationalExample\Storage;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
-use League\OAuth2\Server\Entity\ScopeEntity;
-use League\OAuth2\Server\Storage\AbstractStorage;
-use League\OAuth2\Server\Storage\ScopeInterface;
+use LeagueFork\OAuth2\Server\Entity\ScopeEntity;
+use LeagueFork\OAuth2\Server\Storage\AbstractStorage;
+use LeagueFork\OAuth2\Server\Storage\ScopeInterface;
 
 class ScopeStorage extends AbstractStorage implements ScopeInterface
 {

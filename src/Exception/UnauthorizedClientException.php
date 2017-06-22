@@ -9,7 +9,7 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace League\OAuth2\Server\Exception;
+namespace LeagueFork\OAuth2\Server\Exception;
 
 /**
  * Exception class

@@ -1,21 +1,21 @@
 <?php
 
-namespace LeagueTests\Entity;
+namespace LeagueForkTests\Entity;
 
-use League\OAuth2\Server\Entity\AccessTokenEntity;
-use League\OAuth2\Server\Entity\ScopeEntity;
-use League\OAuth2\Server\Entity\SessionEntity;
+use LeagueFork\OAuth2\Server\Entity\AccessTokenEntity;
+use LeagueFork\OAuth2\Server\Entity\ScopeEntity;
+use LeagueFork\OAuth2\Server\Entity\SessionEntity;
 use Mockery as M;
 
 class AccessTokenEntityTest extends \PHPUnit_Framework_TestCase
 {
     public function testSave()
     {
-        $server = M::mock('League\OAuth2\Server\AbstractServer');
+        $server = M::mock('LeagueFork\OAuth2\Server\AbstractServer');
         $server->shouldReceive('setAccessTokenStorage');
         $server->shouldReceive('setSessionStorage');
 
-        $accessTokenStorage = M::mock('League\OAuth2\Server\Storage\AccessTokenInterface');
+        $accessTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AccessTokenInterface');
         $accessTokenStorage->shouldReceive('create');
         $accessTokenStorage->shouldReceive('associateScope');
         $accessTokenStorage->shouldReceive('setServer');
@@ -23,7 +23,7 @@ class AccessTokenEntityTest extends \PHPUnit_Framework_TestCase
             (new ScopeEntity($server))->hydrate(['id' => 'foo']),
         ]);
 
-        $sessionStorage = M::mock('League\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('getByAccessToken')->andReturn(
             (new SessionEntity($server))
         );
@@ -41,11 +41,11 @@ class AccessTokenEntityTest extends \PHPUnit_Framework_TestCase
 
     public function testExpire()
     {
-        $server = M::mock('League\OAuth2\Server\AbstractServer');
+        $server = M::mock('LeagueFork\OAuth2\Server\AbstractServer');
 
         $server->shouldReceive('setAccessTokenStorage');
 
-        $accessTokenStorage = M::mock('League\OAuth2\Server\Storage\AccessTokenInterface');
+        $accessTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AccessTokenInterface');
         $accessTokenStorage->shouldReceive('delete');
         $accessTokenStorage->shouldReceive('setServer');
 

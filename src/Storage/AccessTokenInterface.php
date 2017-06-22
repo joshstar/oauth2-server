@@ -9,10 +9,10 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace League\OAuth2\Server\Storage;
+namespace LeagueFork\OAuth2\Server\Storage;
 
-use League\OAuth2\Server\Entity\AccessTokenEntity;
-use League\OAuth2\Server\Entity\ScopeEntity;
+use LeagueFork\OAuth2\Server\Entity\AccessTokenEntity;
+use LeagueFork\OAuth2\Server\Entity\ScopeEntity;
 
 /**
  * Access token interface
@@ -24,16 +24,16 @@ interface AccessTokenInterface extends StorageInterface
      *
      * @param string $token The access token
      *
-     * @return \League\OAuth2\Server\Entity\AccessTokenEntity | null
+     * @return \LeagueFork\OAuth2\Server\Entity\AccessTokenEntity | null
      */
     public function get($token);
 
     /**
      * Get the scopes for an access token
      *
-     * @param \League\OAuth2\Server\Entity\AccessTokenEntity $token The access token
+     * @param \LeagueFork\OAuth2\Server\Entity\AccessTokenEntity $token The access token
      *
-     * @return \League\OAuth2\Server\Entity\ScopeEntity[] Array of \League\OAuth2\Server\Entity\ScopeEntity
+     * @return \LeagueFork\OAuth2\Server\Entity\ScopeEntity[] Array of \LeagueFork\OAuth2\Server\Entity\ScopeEntity
      */
     public function getScopes(AccessTokenEntity $token);
 
@@ -51,8 +51,8 @@ interface AccessTokenInterface extends StorageInterface
     /**
      * Associate a scope with an acess token
      *
-     * @param \League\OAuth2\Server\Entity\AccessTokenEntity $token The access token
-     * @param \League\OAuth2\Server\Entity\ScopeEntity       $scope The scope
+     * @param \LeagueFork\OAuth2\Server\Entity\AccessTokenEntity $token The access token
+     * @param \LeagueFork\OAuth2\Server\Entity\ScopeEntity       $scope The scope
      *
      * @return void
      */
@@ -61,7 +61,7 @@ interface AccessTokenInterface extends StorageInterface
     /**
      * Delete an access token
      *
-     * @param \League\OAuth2\Server\Entity\AccessTokenEntity $token The access token to delete
+     * @param \LeagueFork\OAuth2\Server\Entity\AccessTokenEntity $token The access token to delete
      *
      * @return void
      */

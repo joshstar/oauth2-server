@@ -9,16 +9,16 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace League\OAuth2\Server\Grant;
+namespace LeagueFork\OAuth2\Server\Grant;
 
-use League\OAuth2\Server\Entity\AccessTokenEntity;
-use League\OAuth2\Server\Entity\AuthCodeEntity;
-use League\OAuth2\Server\Entity\ClientEntity;
-use League\OAuth2\Server\Entity\RefreshTokenEntity;
-use League\OAuth2\Server\Entity\SessionEntity;
-use League\OAuth2\Server\Event;
-use League\OAuth2\Server\Exception;
-use League\OAuth2\Server\Util\SecureKey;
+use LeagueFork\OAuth2\Server\Entity\AccessTokenEntity;
+use LeagueFork\OAuth2\Server\Entity\AuthCodeEntity;
+use LeagueFork\OAuth2\Server\Entity\ClientEntity;
+use LeagueFork\OAuth2\Server\Entity\RefreshTokenEntity;
+use LeagueFork\OAuth2\Server\Entity\SessionEntity;
+use LeagueFork\OAuth2\Server\Event;
+use LeagueFork\OAuth2\Server\Exception;
+use LeagueFork\OAuth2\Server\Util\SecureKey;
 
 /**
  * Auth code grant class
@@ -42,7 +42,7 @@ class AuthCodeGrant extends AbstractGrant
     /**
      * AuthServer instance
      *
-     * @var \League\OAuth2\Server\AuthorizationServer
+     * @var \LeagueFork\OAuth2\Server\AuthorizationServer
      */
     protected $server = null;
 

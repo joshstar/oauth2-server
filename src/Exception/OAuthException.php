@@ -9,9 +9,9 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace League\OAuth2\Server\Exception;
+namespace LeagueFork\OAuth2\Server\Exception;
 
-use League\OAuth2\Server\Util\RedirectUri;
+use LeagueFork\OAuth2\Server\Util\RedirectUri;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
