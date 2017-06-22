@@ -14,7 +14,7 @@ class SessionEntityTest extends \PHPUnit_Framework_TestCase
 {
     public function testSetGet()
     {
-        $emitter = M::mock('joshstar\Event\Emitter');
+        $emitter = M::mock('League\Event\Emitter');
         $emitter->shouldReceive('emit');
         $server = M::mock('joshstar\OAuth2\Server\AbstractServer');
         $server->shouldReceive('setEventEmitter');

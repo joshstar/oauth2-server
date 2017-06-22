@@ -16,7 +16,7 @@ class AbstractServerTest extends \PHPUnit_Framework_TestCase
         });
         $server->getEventEmitter()->emit('event.name');
         $this->assertTrue($server->getRequest() instanceof \Symfony\Component\HttpFoundation\Request);
-        $this->assertTrue($server->getEventEmitter() instanceof \joshstar\Event\Emitter);
+        $this->assertTrue($server->getEventEmitter() instanceof \League\Event\Emitter);
 
         $server2 = new StubAbstractServer();
         $server2->setRequest((new \Symfony\Component\HttpFoundation\Request()));

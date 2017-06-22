@@ -11,7 +11,7 @@
 
 namespace joshstar\OAuth2\Server;
 
-use joshstar\Event\Emitter;
+use League\Event\Emitter;
 use joshstar\OAuth2\Server\Storage\AccessTokenInterface;
 use joshstar\OAuth2\Server\Storage\AuthCodeInterface;
 use joshstar\OAuth2\Server\Storage\ClientInterface;
@@ -91,7 +91,7 @@ abstract class AbstractServer
     /**
      * Event emitter
      *
-     * @var \joshstar\Event\Emitter
+     * @var \League\Event\Emitter
      */
     protected $eventEmitter;
 
@@ -132,7 +132,7 @@ abstract class AbstractServer
     /**
      * Returns the event emitter
      *
-     * @return \joshstar\Event\Emitter
+     * @return \League\Event\Emitter
      */
     public function getEventEmitter()
     {

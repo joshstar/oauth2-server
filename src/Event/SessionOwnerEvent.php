@@ -11,7 +11,7 @@
 
 namespace joshstar\OAuth2\Server\Event;
 
-use joshstar\Event\AbstractEvent;
+use League\Event\AbstractEvent;
 use joshstar\OAuth2\Server\Entity\SessionEntity;
 
 class SessionOwnerEvent extends AbstractEvent

@@ -11,7 +11,7 @@
 
 namespace joshstar\OAuth2\Server\Event;
 
-use joshstar\Event\AbstractEvent;
+use League\Event\AbstractEvent;
 use Symfony\Component\HttpFoundation\Request;
 
 class ClientAuthenticationFailedEvent extends AbstractEvent
