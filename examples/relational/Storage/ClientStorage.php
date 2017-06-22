@@ -3,10 +3,10 @@
 namespace RelationalExample\Storage;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
-use LeagueFork\OAuth2\Server\Entity\ClientEntity;
-use LeagueFork\OAuth2\Server\Entity\SessionEntity;
-use LeagueFork\OAuth2\Server\Storage\AbstractStorage;
-use LeagueFork\OAuth2\Server\Storage\ClientInterface;
+use joshstar\OAuth2\Server\Entity\ClientEntity;
+use joshstar\OAuth2\Server\Entity\SessionEntity;
+use joshstar\OAuth2\Server\Storage\AbstractStorage;
+use joshstar\OAuth2\Server\Storage\ClientInterface;
 
 class ClientStorage extends AbstractStorage implements ClientInterface
 {

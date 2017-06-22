@@ -13,7 +13,7 @@ $router = new \Orno\Route\RouteCollection();
 $router->setStrategy(\Orno\Route\RouteStrategyInterface::RESTFUL_STRATEGY);
 
 // Set up the OAuth 2.0 authorization server
-$server = new \LeagueFork\OAuth2\Server\AuthorizationServer();
+$server = new \joshstar\OAuth2\Server\AuthorizationServer();
 $server->setSessionStorage(new Storage\SessionStorage());
 $server->setAccessTokenStorage(new Storage\AccessTokenStorage());
 $server->setRefreshTokenStorage(new Storage\RefreshTokenStorage());
@@ -21,10 +21,10 @@ $server->setClientStorage(new Storage\ClientStorage());
 $server->setScopeStorage(new Storage\ScopeStorage());
 $server->setAuthCodeStorage(new Storage\AuthCodeStorage());
 
-$clientCredentials = new \LeagueFork\OAuth2\Server\Grant\ClientCredentialsGrant();
+$clientCredentials = new \joshstar\OAuth2\Server\Grant\ClientCredentialsGrant();
 $server->addGrantType($clientCredentials);
 
-$passwordGrant = new \LeagueFork\OAuth2\Server\Grant\PasswordGrant();
+$passwordGrant = new \joshstar\OAuth2\Server\Grant\PasswordGrant();
 $passwordGrant->setVerifyCredentialsCallback(function ($username, $password) {
     $result = (new Model\Users())->get($username);
     if (count($result) !== 1) {
@@ -39,7 +39,7 @@ $passwordGrant->setVerifyCredentialsCallback(function ($username, $password) {
 });
 $server->addGrantType($passwordGrant);
 
-$refrehTokenGrant = new \LeagueFork\OAuth2\Server\Grant\RefreshTokenGrant();
+$refrehTokenGrant = new \joshstar\OAuth2\Server\Grant\RefreshTokenGrant();
 $server->addGrantType($refrehTokenGrant);
 
 // Routing setup
@@ -77,7 +77,7 @@ try {
     // A failed response
     $response = $e->getJsonResponse();
     $response->setContent(json_encode(['status_code' => $e->getStatusCode(), 'message' => $e->getMessage()]));
-} catch (\LeagueFork\OAuth2\Server\Exception\OAuthException $e) {
+} catch (\joshstar\OAuth2\Server\Exception\OAuthException $e) {
     $response = new Response(json_encode([
         'error'     =>  $e->errorType,
         'message'   =>  $e->getMessage(),

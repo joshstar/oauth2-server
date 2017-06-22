@@ -1,5 +1,5 @@
 {
-	"name": "league/oauth2-server",
+	"name": "joshstar/oauth2-server-passport-compatibility",
 	"description": "A lightweight and powerful OAuth 2.0 authorization and resource server library with support for all the core specification grants. This library will allow you to secure your API with OAuth and allow your applications users to approve apps that want to access their data from your API.",
 	"homepage": "http://oauth2.thephpleague.com/",
 	"license": "MIT",
@@ -15,24 +15,8 @@
 	"repositories": [
 		{
 			"type": "git",
-			"url": "https://github.com/thephpleague/oauth2-server.git"
+			"url": "https://github.com/joshstar/oauth2-server-passport-compatibility.git"
 		}
-	],
-	"keywords": [
-		"oauth",
-		"oauth2",
-		"oauth 2",
-		"oauth 2.0",
-		"server",
-		"auth",
-		"authorization",
-		"authorisation",
-		"authentication",
-		"resource",
-		"api",
-		"auth",
-		"protect",
-		"secure"
 	],
 	"authors": [
 		{
@@ -47,12 +31,12 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"LeagueFork\\OAuth2\\Server\\": "src/"
+			"joshstar\\OAuth2\\Server\\": "src/"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"LeagueForkTests\\": "tests/unit/"
+			"joshstarTests\\": "tests/unit/"
 		}
 	}
 }

@@ -9,10 +9,10 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace LeagueFork\OAuth2\Server\TokenType;
+namespace joshstar\OAuth2\Server\TokenType;
 
-use LeagueFork\OAuth2\Server\AbstractServer;
-use LeagueFork\OAuth2\Server\Entity\SessionEntity;
+use joshstar\OAuth2\Server\AbstractServer;
+use joshstar\OAuth2\Server\Entity\SessionEntity;
 use Symfony\Component\HttpFoundation\Request;
 
 interface TokenTypeInterface
@@ -27,7 +27,7 @@ interface TokenTypeInterface
     /**
      * Set the server
      *
-     * @param \LeagueFork\OAuth2\Server\AbstractServer $server
+     * @param \joshstar\OAuth2\Server\AbstractServer $server
      *
      * @return self
      */
@@ -51,7 +51,7 @@ interface TokenTypeInterface
     public function getParam($key);
 
     /**
-     * @param \LeagueFork\OAuth2\Server\Entity\SessionEntity $session
+     * @param \joshstar\OAuth2\Server\Entity\SessionEntity $session
      *
      * @return self
      */

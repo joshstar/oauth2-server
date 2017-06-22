@@ -1,8 +1,8 @@
 <?php
 
-namespace LeagueForkTests\Stubs;
+namespace joshstarTests\Stubs;
 
-use LeagueFork\OAuth2\Server\Entity\AbstractTokenEntity;
+use joshstar\OAuth2\Server\Entity\AbstractTokenEntity;
 
 class StubAbstractTokenEntity extends AbstractTokenEntity
 {

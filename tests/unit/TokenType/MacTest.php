@@ -1,10 +1,10 @@
 <?php
 
-namespace LeagueForkTests\TokenType;
+namespace joshstarTests\TokenType;
 
-use LeagueFork\OAuth2\Server\AuthorizationServer;
-use LeagueFork\OAuth2\Server\Entity\AccessTokenEntity;
-use LeagueFork\OAuth2\Server\TokenType\MAC;
+use joshstar\OAuth2\Server\AuthorizationServer;
+use joshstar\OAuth2\Server\Entity\AccessTokenEntity;
+use joshstar\OAuth2\Server\TokenType\MAC;
 use Mockery as M;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -12,7 +12,7 @@ class MacTest extends \PHPUnit_Framework_TestCase
 {
     public function testGenerateResponse()
     {
-        $macStorage = M::mock('\LeagueFork\OAuth2\Server\Storage\MacTokenInterface');
+        $macStorage = M::mock('\joshstar\OAuth2\Server\Storage\MacTokenInterface');
         $macStorage->shouldReceive('create');
 
         $server = new AuthorizationServer();
@@ -39,7 +39,7 @@ class MacTest extends \PHPUnit_Framework_TestCase
 
     public function testDetermineAccessTokenInHeaderValid()
     {
-        $macStorage = M::mock('\LeagueFork\OAuth2\Server\Storage\MacTokenInterface');
+        $macStorage = M::mock('\joshstar\OAuth2\Server\Storage\MacTokenInterface');
         $macStorage->shouldReceive('getByAccessToken')->andReturn('abcdef');
 
         $server = new AuthorizationServer();
@@ -70,7 +70,7 @@ class MacTest extends \PHPUnit_Framework_TestCase
 
     public function testDetermineAccessTokenInHeaderMissingHeader()
     {
-        $macStorage = M::mock('\LeagueFork\OAuth2\Server\Storage\MacTokenInterface');
+        $macStorage = M::mock('\joshstar\OAuth2\Server\Storage\MacTokenInterface');
         $macStorage->shouldReceive('getByAccessToken')->andReturn('abcdef');
 
         $server = new AuthorizationServer();
@@ -87,7 +87,7 @@ class MacTest extends \PHPUnit_Framework_TestCase
 
     public function testDetermineAccessTokenInHeaderMissingAuthMac()
     {
-        $macStorage = M::mock('\LeagueFork\OAuth2\Server\Storage\MacTokenInterface');
+        $macStorage = M::mock('\joshstar\OAuth2\Server\Storage\MacTokenInterface');
         $macStorage->shouldReceive('getByAccessToken')->andReturn('abcdef');
 
         $server = new AuthorizationServer();
@@ -106,7 +106,7 @@ class MacTest extends \PHPUnit_Framework_TestCase
 
     public function testDetermineAccessTokenInHeaderInvalidParam()
     {
-        $macStorage = M::mock('\LeagueFork\OAuth2\Server\Storage\MacTokenInterface');
+        $macStorage = M::mock('\joshstar\OAuth2\Server\Storage\MacTokenInterface');
         $macStorage->shouldReceive('getByAccessToken')->andReturn('abcdef');
 
         $server = new AuthorizationServer();
@@ -125,7 +125,7 @@ class MacTest extends \PHPUnit_Framework_TestCase
 
     public function testDetermineAccessTokenInHeaderMismatchTimestamp()
     {
-        $macStorage = M::mock('\LeagueFork\OAuth2\Server\Storage\MacTokenInterface');
+        $macStorage = M::mock('\joshstar\OAuth2\Server\Storage\MacTokenInterface');
         $macStorage->shouldReceive('getByAccessToken')->andReturn('abcdef');
 
         $server = new AuthorizationServer();
@@ -145,7 +145,7 @@ class MacTest extends \PHPUnit_Framework_TestCase
 
     public function testDetermineAccessTokenInHeaderMissingMacKey()
     {
-        $macStorage = M::mock('\LeagueFork\OAuth2\Server\Storage\MacTokenInterface');
+        $macStorage = M::mock('\joshstar\OAuth2\Server\Storage\MacTokenInterface');
         $macStorage->shouldReceive('getByAccessToken')->andReturn(null);
 
         $server = new AuthorizationServer();

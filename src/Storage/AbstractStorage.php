@@ -9,9 +9,9 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace LeagueFork\OAuth2\Server\Storage;
+namespace joshstar\OAuth2\Server\Storage;
 
-use LeagueFork\OAuth2\Server\AbstractServer;
+use joshstar\OAuth2\Server\AbstractServer;
 
 /**
  * Abstract storage class
@@ -21,14 +21,14 @@ abstract class AbstractStorage implements StorageInterface
     /**
      * Server
      *
-     * @var \LeagueFork\OAuth2\Server\AbstractServer $server
+     * @var \joshstar\OAuth2\Server\AbstractServer $server
      */
     protected $server;
 
     /**
      * Set the server
      *
-     * @param \LeagueFork\OAuth2\Server\AbstractServer $server
+     * @param \joshstar\OAuth2\Server\AbstractServer $server
      *
      * @return self
      */
@@ -42,7 +42,7 @@ abstract class AbstractStorage implements StorageInterface
     /**
      * Return the server
      *
-     * @return \LeagueFork\OAuth2\Server\AbstractServer
+     * @return \joshstar\OAuth2\Server\AbstractServer
      */
     protected function getServer()
     {

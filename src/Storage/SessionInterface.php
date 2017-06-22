@@ -9,12 +9,12 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace LeagueFork\OAuth2\Server\Storage;
+namespace joshstar\OAuth2\Server\Storage;
 
-use LeagueFork\OAuth2\Server\Entity\AccessTokenEntity;
-use LeagueFork\OAuth2\Server\Entity\AuthCodeEntity;
-use LeagueFork\OAuth2\Server\Entity\ScopeEntity;
-use LeagueFork\OAuth2\Server\Entity\SessionEntity;
+use joshstar\OAuth2\Server\Entity\AccessTokenEntity;
+use joshstar\OAuth2\Server\Entity\AuthCodeEntity;
+use joshstar\OAuth2\Server\Entity\ScopeEntity;
+use joshstar\OAuth2\Server\Entity\SessionEntity;
 
 /**
  * Session storage interface
@@ -24,27 +24,27 @@ interface SessionInterface extends StorageInterface
     /**
      * Get a session from an access token
      *
-     * @param \LeagueFork\OAuth2\Server\Entity\AccessTokenEntity $accessToken The access token
+     * @param \joshstar\OAuth2\Server\Entity\AccessTokenEntity $accessToken The access token
      *
-     * @return \LeagueFork\OAuth2\Server\Entity\SessionEntity | null
+     * @return \joshstar\OAuth2\Server\Entity\SessionEntity | null
      */
     public function getByAccessToken(AccessTokenEntity $accessToken);
 
     /**
      * Get a session from an auth code
      *
-     * @param \LeagueFork\OAuth2\Server\Entity\AuthCodeEntity $authCode The auth code
+     * @param \joshstar\OAuth2\Server\Entity\AuthCodeEntity $authCode The auth code
      *
-     * @return \LeagueFork\OAuth2\Server\Entity\SessionEntity | null
+     * @return \joshstar\OAuth2\Server\Entity\SessionEntity | null
      */
     public function getByAuthCode(AuthCodeEntity $authCode);
 
     /**
      * Get a session's scopes
      *
-     * @param  \LeagueFork\OAuth2\Server\Entity\SessionEntity
+     * @param  \joshstar\OAuth2\Server\Entity\SessionEntity
      *
-     * @return \LeagueFork\OAuth2\Server\Entity\ScopeEntity[] Array of \LeagueFork\OAuth2\Server\Entity\ScopeEntity
+     * @return \joshstar\OAuth2\Server\Entity\ScopeEntity[] Array of \joshstar\OAuth2\Server\Entity\ScopeEntity
      */
     public function getScopes(SessionEntity $session);
 
@@ -63,8 +63,8 @@ interface SessionInterface extends StorageInterface
     /**
      * Associate a scope with a session
      *
-     * @param \LeagueFork\OAuth2\Server\Entity\SessionEntity $session The session
-     * @param \LeagueFork\OAuth2\Server\Entity\ScopeEntity   $scope   The scope
+     * @param \joshstar\OAuth2\Server\Entity\SessionEntity $session The session
+     * @param \joshstar\OAuth2\Server\Entity\ScopeEntity   $scope   The scope
      *
      * @return void
      */

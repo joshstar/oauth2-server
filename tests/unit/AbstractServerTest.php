@@ -1,8 +1,8 @@
 <?php
 
-namespace LeagueForkTests;
+namespace joshstarTests;
 
-use LeagueForkTests\Stubs\StubAbstractServer;
+use joshstarTests\Stubs\StubAbstractServer;
 
 class AbstractServerTest extends \PHPUnit_Framework_TestCase
 {
@@ -16,7 +16,7 @@ class AbstractServerTest extends \PHPUnit_Framework_TestCase
         });
         $server->getEventEmitter()->emit('event.name');
         $this->assertTrue($server->getRequest() instanceof \Symfony\Component\HttpFoundation\Request);
-        $this->assertTrue($server->getEventEmitter() instanceof \LeagueFork\Event\Emitter);
+        $this->assertTrue($server->getEventEmitter() instanceof \joshstar\Event\Emitter);
 
         $server2 = new StubAbstractServer();
         $server2->setRequest((new \Symfony\Component\HttpFoundation\Request()));

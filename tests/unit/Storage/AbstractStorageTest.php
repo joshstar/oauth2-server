@@ -1,9 +1,9 @@
 <?php
 
-namespace LeagueForkTests\Storage;
+namespace joshstarTests\Storage;
 
-use LeagueForkTests\Stubs\StubAbstractServer;
-use LeagueForkTests\Stubs\StubAbstractStorage;
+use joshstarTests\Stubs\StubAbstractServer;
+use joshstarTests\Stubs\StubAbstractStorage;
 
 class AbstractStorageTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,18 +1,18 @@
 <?php
 
-namespace LeagueForkTests\Entity;
+namespace joshstarTests\Entity;
 
-use LeagueFork\OAuth2\Server\AuthorizationServer;
-use LeagueFork\OAuth2\Server\Entity\ScopeEntity;
-use LeagueFork\OAuth2\Server\Entity\SessionEntity;
-use LeagueForkTests\Stubs\StubAbstractTokenEntity;
+use joshstar\OAuth2\Server\AuthorizationServer;
+use joshstar\OAuth2\Server\Entity\ScopeEntity;
+use joshstar\OAuth2\Server\Entity\SessionEntity;
+use joshstarTests\Stubs\StubAbstractTokenEntity;
 use Mockery as M;
 
 class AbstractTokenEntityTest extends \PHPUnit_Framework_TestCase
 {
     public function testSetGet()
     {
-        $server = M::mock('LeagueFork\OAuth2\Server\AbstractServer');
+        $server = M::mock('joshstar\OAuth2\Server\AbstractServer');
         $time = time();
 
         $entity = new StubAbstractTokenEntity($server);
@@ -32,10 +32,10 @@ class AbstractTokenEntityTest extends \PHPUnit_Framework_TestCase
 
     /*public function testGetSession()
     {
-        $server = M::mock('LeagueFork\OAuth2\Server\AuthorizationServer');
+        $server = M::mock('joshstar\OAuth2\Server\AuthorizationServer');
         $server->shouldReceive('setSessionStorage');
 
-        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('joshstar\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('getByAccessToken')->andReturn(
             (new SessionEntity($server))
         );
@@ -51,10 +51,10 @@ class AbstractTokenEntityTest extends \PHPUnit_Framework_TestCase
 
     /*public function testGetScopes()
     {
-        $server = M::mock('LeagueFork\OAuth2\Server\AuthorizationServer');
+        $server = M::mock('joshstar\OAuth2\Server\AuthorizationServer');
         $server->shouldReceive('setAccessTokenStorage');
 
-        $accessTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AccessTokenInterface');
+        $accessTokenStorage = M::mock('joshstar\OAuth2\Server\Storage\AccessTokenInterface');
         $accessTokenStorage->shouldReceive('getScopes')->andReturn(
             []
         );
@@ -68,9 +68,9 @@ class AbstractTokenEntityTest extends \PHPUnit_Framework_TestCase
 
     /*public function testHasScopes()
     {
-        $server = M::mock('LeagueFork\OAuth2\Server\AuthorizationServer');
+        $server = M::mock('joshstar\OAuth2\Server\AuthorizationServer');
 
-        $accessTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AccessTokenInterface');
+        $accessTokenStorage = M::mock('joshstar\OAuth2\Server\Storage\AccessTokenInterface');
         $accessTokenStorage->shouldReceive('getScopes')->andReturn(
             []
         );
@@ -84,10 +84,10 @@ class AbstractTokenEntityTest extends \PHPUnit_Framework_TestCase
 
     public function testFormatScopes()
     {
-        $server = M::mock('LeagueFork\OAuth2\Server\AbstractServer');
+        $server = M::mock('joshstar\OAuth2\Server\AbstractServer');
 
         $entity = new StubAbstractTokenEntity($server);
-        $reflectedEntity = new \ReflectionClass('LeagueForkTests\Stubs\StubAbstractTokenEntity');
+        $reflectedEntity = new \ReflectionClass('joshstarTests\Stubs\StubAbstractTokenEntity');
         $method = $reflectedEntity->getMethod('formatScopes');
         $method->setAccessible(true);
 
@@ -106,7 +106,7 @@ class AbstractTokenEntityTest extends \PHPUnit_Framework_TestCase
 
     public function test__toString()
     {
-        $server = M::mock('LeagueFork\OAuth2\Server\AbstractServer');
+        $server = M::mock('joshstar\OAuth2\Server\AbstractServer');
 
         $entity = new StubAbstractTokenEntity($server);
         $this->assertEquals('', (string) $entity);

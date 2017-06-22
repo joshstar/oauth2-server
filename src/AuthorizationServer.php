@@ -9,10 +9,10 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace LeagueFork\OAuth2\Server;
+namespace joshstar\OAuth2\Server;
 
-use LeagueFork\OAuth2\Server\Grant\GrantTypeInterface;
-use LeagueFork\OAuth2\Server\TokenType\Bearer;
+use joshstar\OAuth2\Server\Grant\GrantTypeInterface;
+use joshstar\OAuth2\Server\TokenType\Bearer;
 
 /**
  * OAuth 2.0 authorization server class

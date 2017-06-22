@@ -3,9 +3,9 @@
 namespace RelationalExample\Storage;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
-use LeagueFork\OAuth2\Server\Entity\RefreshTokenEntity;
-use LeagueFork\OAuth2\Server\Storage\AbstractStorage;
-use LeagueFork\OAuth2\Server\Storage\RefreshTokenInterface;
+use joshstar\OAuth2\Server\Entity\RefreshTokenEntity;
+use joshstar\OAuth2\Server\Storage\AbstractStorage;
+use joshstar\OAuth2\Server\Storage\RefreshTokenInterface;
 
 class RefreshTokenStorage extends AbstractStorage implements RefreshTokenInterface
 {

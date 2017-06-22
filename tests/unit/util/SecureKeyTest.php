@@ -1,8 +1,8 @@
 <?php
 
-namespace LeagueForkTests\util;
+namespace joshstarTests\util;
 
-use LeagueFork\OAuth2\Server\Util\SecureKey;
+use joshstar\OAuth2\Server\Util\SecureKey;
 
 class SecureKeyTest extends \PHPUnit_Framework_TestCase
 {
@@ -19,7 +19,7 @@ class SecureKeyTest extends \PHPUnit_Framework_TestCase
 
     public function testGenerateWithDifferentAlgorithm()
     {
-        $algorithm = $this->getMock('LeagueFork\OAuth2\Server\Util\KeyAlgorithm\KeyAlgorithmInterface');
+        $algorithm = $this->getMock('joshstar\OAuth2\Server\Util\KeyAlgorithm\KeyAlgorithmInterface');
 
         $result = 'dasdsdsaads';
         $algorithm

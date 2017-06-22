@@ -9,10 +9,10 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace LeagueFork\OAuth2\Server\Entity;
+namespace joshstar\OAuth2\Server\Entity;
 
-use LeagueFork\OAuth2\Server\AbstractServer;
-use LeagueFork\OAuth2\Server\Util\SecureKey;
+use joshstar\OAuth2\Server\AbstractServer;
+use joshstar\OAuth2\Server\Util\SecureKey;
 
 /**
  * Abstract token class
@@ -29,14 +29,14 @@ abstract class AbstractTokenEntity
     /**
      * Associated session
      *
-     * @var \LeagueFork\OAuth2\Server\Entity\SessionEntity
+     * @var \joshstar\OAuth2\Server\Entity\SessionEntity
      */
     protected $session;
 
     /**
      * Session scopes
      *
-     * @var \LeagueFork\OAuth2\Server\Entity\ScopeEntity[]
+     * @var \joshstar\OAuth2\Server\Entity\ScopeEntity[]
      */
     protected $scopes;
 
@@ -50,14 +50,14 @@ abstract class AbstractTokenEntity
     /**
      * Authorization or resource server
      *
-     * @var \LeagueFork\OAuth2\Server\AbstractServer
+     * @var \joshstar\OAuth2\Server\AbstractServer
      */
     protected $server;
 
     /**
      * __construct
      *
-     * @param \LeagueFork\OAuth2\Server\AbstractServer $server
+     * @param \joshstar\OAuth2\Server\AbstractServer $server
      *
      * @return self
      */
@@ -71,7 +71,7 @@ abstract class AbstractTokenEntity
     /**
      * Set session
      *
-     * @param \LeagueFork\OAuth2\Server\Entity\SessionEntity $session
+     * @param \joshstar\OAuth2\Server\Entity\SessionEntity $session
      *
      * @return self
      */
@@ -143,7 +143,7 @@ abstract class AbstractTokenEntity
     /**
      * Associate a scope
      *
-     * @param \LeagueFork\OAuth2\Server\Entity\ScopeEntity $scope
+     * @param \joshstar\OAuth2\Server\Entity\ScopeEntity $scope
      *
      * @return self
      */
@@ -159,7 +159,7 @@ abstract class AbstractTokenEntity
     /**
      * Format the local scopes array
      *
-     * @param  \LeagueFork\OAuth2\Server\Entity\ScopeEntity[]
+     * @param  \joshstar\OAuth2\Server\Entity\ScopeEntity[]
      *
      * @return array
      */

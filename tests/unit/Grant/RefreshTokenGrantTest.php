@@ -1,14 +1,14 @@
 <?php
 
-namespace LeagueForkTests\Grant;
+namespace joshstarTests\Grant;
 
-use LeagueFork\OAuth2\Server\AuthorizationServer;
-use LeagueFork\OAuth2\Server\Entity\AccessTokenEntity;
-use LeagueFork\OAuth2\Server\Entity\ClientEntity;
-use LeagueFork\OAuth2\Server\Entity\RefreshTokenEntity;
-use LeagueFork\OAuth2\Server\Entity\ScopeEntity;
-use LeagueFork\OAuth2\Server\Entity\SessionEntity;
-use LeagueFork\OAuth2\Server\Grant\RefreshTokenGrant;
+use joshstar\OAuth2\Server\AuthorizationServer;
+use joshstar\OAuth2\Server\Entity\AccessTokenEntity;
+use joshstar\OAuth2\Server\Entity\ClientEntity;
+use joshstar\OAuth2\Server\Entity\RefreshTokenEntity;
+use joshstar\OAuth2\Server\Entity\ScopeEntity;
+use joshstar\OAuth2\Server\Entity\SessionEntity;
+use joshstar\OAuth2\Server\Grant\RefreshTokenGrant;
 use Mockery as M;
 
 class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
@@ -26,7 +26,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCompleteFlowMissingClientId()
     {
-        $this->setExpectedException('LeagueFork\OAuth2\Server\Exception\InvalidRequestException');
+        $this->setExpectedException('joshstar\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST['grant_type'] = 'refresh_token';
 
@@ -39,7 +39,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCompleteFlowMissingClientSecret()
     {
-        $this->setExpectedException('LeagueFork\OAuth2\Server\Exception\InvalidRequestException');
+        $this->setExpectedException('joshstar\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST = [
             'grant_type' => 'refresh_token',
@@ -55,7 +55,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCompleteFlowInvalidClient()
     {
-        $this->setExpectedException('LeagueFork\OAuth2\Server\Exception\InvalidClientException');
+        $this->setExpectedException('joshstar\OAuth2\Server\Exception\InvalidClientException');
 
         $_POST = [
             'grant_type' => 'refresh_token',
@@ -66,7 +66,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
         $server = new AuthorizationServer();
         $grant = new RefreshTokenGrant();
 
-        $clientStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ClientInterface');
+        $clientStorage = M::mock('joshstar\OAuth2\Server\Storage\ClientInterface');
         $clientStorage->shouldReceive('setServer');
         $clientStorage->shouldReceive('get')->andReturn(null);
 
@@ -78,7 +78,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCompleteFlowMissingRefreshToken()
     {
-        $this->setExpectedException('LeagueFork\OAuth2\Server\Exception\InvalidRequestException');
+        $this->setExpectedException('joshstar\OAuth2\Server\Exception\InvalidRequestException');
 
         $_POST = [
             'grant_type'    => 'refresh_token',
@@ -89,16 +89,16 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
         $server = new AuthorizationServer();
         $grant = new RefreshTokenGrant();
 
-        $clientStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ClientInterface');
+        $clientStorage = M::mock('joshstar\OAuth2\Server\Storage\ClientInterface');
         $clientStorage->shouldReceive('setServer');
         $clientStorage->shouldReceive('get')->andReturn(
             (new ClientEntity($server))->hydrate(['id' => 'testapp'])
         );
 
-        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('joshstar\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('setServer');
 
-        $scopeStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ScopeInterface');
+        $scopeStorage = M::mock('joshstar\OAuth2\Server\Storage\ScopeInterface');
         $scopeStorage->shouldReceive('setServer');
 
         $server->setClientStorage($clientStorage);
@@ -112,7 +112,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCompleteFlowInvalidRefreshToken()
     {
-        $this->setExpectedException('LeagueFork\OAuth2\Server\Exception\InvalidRefreshException');
+        $this->setExpectedException('joshstar\OAuth2\Server\Exception\InvalidRefreshException');
 
         $_POST = [
             'grant_type'    => 'refresh_token',
@@ -124,17 +124,17 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
         $server = new AuthorizationServer();
         $grant = new RefreshTokenGrant();
 
-        $clientStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ClientInterface');
+        $clientStorage = M::mock('joshstar\OAuth2\Server\Storage\ClientInterface');
         $clientStorage->shouldReceive('setServer');
         $clientStorage->shouldReceive('get')->andReturn(
             (new ClientEntity($server))->hydrate(['id' => 'testapp'])
         );
 
-        $refreshTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\RefreshTokenInterface');
+        $refreshTokenStorage = M::mock('joshstar\OAuth2\Server\Storage\RefreshTokenInterface');
         $refreshTokenStorage->shouldReceive('get');
         $refreshTokenStorage->shouldReceive('setServer');
 
-        $scopeStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ScopeInterface');
+        $scopeStorage = M::mock('joshstar\OAuth2\Server\Storage\ScopeInterface');
         $scopeStorage->shouldReceive('setServer');
 
         $server->setClientStorage($clientStorage);
@@ -158,13 +158,13 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
         $server = new AuthorizationServer();
         $grant = new RefreshTokenGrant();
 
-        $clientStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ClientInterface');
+        $clientStorage = M::mock('joshstar\OAuth2\Server\Storage\ClientInterface');
         $clientStorage->shouldReceive('setServer');
         $clientStorage->shouldReceive('get')->andReturn(
             (new ClientEntity($server))->hydrate(['id' => 'testapp'])
         );
 
-        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('joshstar\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('setServer');
         $sessionStorage->shouldReceive('getScopes')->shouldReceive('getScopes')->andReturn([]);
         $sessionStorage->shouldReceive('associateScope');
@@ -172,7 +172,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
             (new SessionEntity($server))
         );
 
-        $accessTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AccessTokenInterface');
+        $accessTokenStorage = M::mock('joshstar\OAuth2\Server\Storage\AccessTokenInterface');
         $accessTokenStorage->shouldReceive('setServer');
         $accessTokenStorage->shouldReceive('get')->andReturn(
             (new AccessTokenEntity($server))
@@ -184,7 +184,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
         ]);
         $accessTokenStorage->shouldReceive('associateScope');
 
-        $refreshTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\RefreshTokenInterface');
+        $refreshTokenStorage = M::mock('joshstar\OAuth2\Server\Storage\RefreshTokenInterface');
         $refreshTokenStorage->shouldReceive('setServer');
         $refreshTokenStorage->shouldReceive('associateScope');
         $refreshTokenStorage->shouldReceive('delete');
@@ -193,7 +193,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
             (new RefreshTokenEntity($server))->setExpireTime(time() + 86400)
         );
 
-        $scopeStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ScopeInterface');
+        $scopeStorage = M::mock('joshstar\OAuth2\Server\Storage\ScopeInterface');
         $scopeStorage->shouldReceive('setServer');
         $scopeStorage->shouldReceive('get')->andReturn(
             (new ScopeEntity($server))->hydrate(['id' => 'foo'])
@@ -229,13 +229,13 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
 
         $oldSession = (new SessionEntity($server))->associateScope((new ScopeEntity($server))->hydrate(['id' => 'foo']));
 
-        $clientStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ClientInterface');
+        $clientStorage = M::mock('joshstar\OAuth2\Server\Storage\ClientInterface');
         $clientStorage->shouldReceive('setServer');
         $clientStorage->shouldReceive('get')->andReturn(
             (new ClientEntity($server))->hydrate(['id' => 'testapp'])
         );
 
-        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('joshstar\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('setServer');
         $sessionStorage->shouldReceive('getScopes')->shouldReceive('getScopes')->andReturn([]);
         $sessionStorage->shouldReceive('associateScope');
@@ -243,7 +243,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
             $oldSession
         );
 
-        $accessTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AccessTokenInterface');
+        $accessTokenStorage = M::mock('joshstar\OAuth2\Server\Storage\AccessTokenInterface');
         $accessTokenStorage->shouldReceive('setServer');
         $accessTokenStorage->shouldReceive('get')->andReturn(
             (new AccessTokenEntity($server))
@@ -255,7 +255,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
         ]);
         $accessTokenStorage->shouldReceive('associateScope');
 
-        $refreshTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\RefreshTokenInterface');
+        $refreshTokenStorage = M::mock('joshstar\OAuth2\Server\Storage\RefreshTokenInterface');
         $refreshTokenStorage->shouldReceive('setServer');
         $refreshTokenStorage->shouldReceive('associateScope');
         $refreshTokenStorage->shouldReceive('delete');
@@ -264,7 +264,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
             (new RefreshTokenEntity($server))->setExpireTime(time() + 86400)
         );
 
-        $scopeStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ScopeInterface');
+        $scopeStorage = M::mock('joshstar\OAuth2\Server\Storage\ScopeInterface');
         $scopeStorage->shouldReceive('setServer');
         $scopeStorage->shouldReceive('get')->andReturn(
             (new ScopeEntity($server))->hydrate(['id' => 'foo'])
@@ -287,7 +287,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
 
     public function testCompleteFlowExpiredRefreshToken()
     {
-        $this->setExpectedException('LeagueFork\OAuth2\Server\Exception\InvalidRefreshException');
+        $this->setExpectedException('joshstar\OAuth2\Server\Exception\InvalidRefreshException');
 
         $_POST = [
             'grant_type'    => 'refresh_token',
@@ -302,13 +302,13 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
 
         $oldSession = (new SessionEntity($server))->associateScope((new ScopeEntity($server))->hydrate(['id' => 'foo']));
 
-        $clientStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ClientInterface');
+        $clientStorage = M::mock('joshstar\OAuth2\Server\Storage\ClientInterface');
         $clientStorage->shouldReceive('setServer');
         $clientStorage->shouldReceive('get')->andReturn(
             (new ClientEntity($server))->hydrate(['id' => 'testapp'])
         );
 
-        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('joshstar\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('setServer');
         $sessionStorage->shouldReceive('getScopes')->shouldReceive('getScopes')->andReturn([]);
         $sessionStorage->shouldReceive('associateScope');
@@ -316,7 +316,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
             $oldSession
         );
 
-        $accessTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AccessTokenInterface');
+        $accessTokenStorage = M::mock('joshstar\OAuth2\Server\Storage\AccessTokenInterface');
         $accessTokenStorage->shouldReceive('setServer');
         $accessTokenStorage->shouldReceive('get')->andReturn(
             (new AccessTokenEntity($server))
@@ -328,7 +328,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
         ]);
         $accessTokenStorage->shouldReceive('associateScope');
 
-        $refreshTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\RefreshTokenInterface');
+        $refreshTokenStorage = M::mock('joshstar\OAuth2\Server\Storage\RefreshTokenInterface');
         $refreshTokenStorage->shouldReceive('setServer');
         $refreshTokenStorage->shouldReceive('associateScope');
         $refreshTokenStorage->shouldReceive('delete');
@@ -337,7 +337,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
             (new RefreshTokenEntity($server))
         );
 
-        $scopeStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ScopeInterface');
+        $scopeStorage = M::mock('joshstar\OAuth2\Server\Storage\ScopeInterface');
         $scopeStorage->shouldReceive('setServer');
         $scopeStorage->shouldReceive('get')->andReturn(
             (new ScopeEntity($server))->hydrate(['id' => 'foo'])
@@ -368,13 +368,13 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
 
         $oldSession = (new SessionEntity($server))->associateScope((new ScopeEntity($server))->hydrate(['id' => 'foo']));
 
-        $clientStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ClientInterface');
+        $clientStorage = M::mock('joshstar\OAuth2\Server\Storage\ClientInterface');
         $clientStorage->shouldReceive('setServer');
         $clientStorage->shouldReceive('get')->andReturn(
             (new ClientEntity($server))->hydrate(['id' => 'testapp'])
         );
 
-        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('joshstar\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('setServer');
         $sessionStorage->shouldReceive('getScopes')->shouldReceive('getScopes')->andReturn([]);
         $sessionStorage->shouldReceive('associateScope');
@@ -382,7 +382,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
             $oldSession
         );
 
-        $accessTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AccessTokenInterface');
+        $accessTokenStorage = M::mock('joshstar\OAuth2\Server\Storage\AccessTokenInterface');
         $accessTokenStorage->shouldReceive('setServer');
         $accessTokenStorage->shouldReceive('get')->andReturn(
             (new AccessTokenEntity($server))
@@ -394,7 +394,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
         ]);
         $accessTokenStorage->shouldReceive('associateScope');
 
-        $refreshTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\RefreshTokenInterface');
+        $refreshTokenStorage = M::mock('joshstar\OAuth2\Server\Storage\RefreshTokenInterface');
         $refreshTokenStorage->shouldReceive('setServer');
         $refreshTokenStorage->shouldReceive('associateScope');
         $refreshTokenStorage->shouldReceive('delete');
@@ -403,7 +403,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
             (new RefreshTokenEntity($server))->setExpireTime(time() + 86400)
         );
 
-        $scopeStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ScopeInterface');
+        $scopeStorage = M::mock('joshstar\OAuth2\Server\Storage\ScopeInterface');
         $scopeStorage->shouldReceive('setServer');
         $scopeStorage->shouldReceive('get')->andReturn(
             (new ScopeEntity($server))->hydrate(['id' => 'blah'])
@@ -417,7 +417,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
 
         $server->addGrantType($grant);
 
-        $this->setExpectedException('LeagueFork\OAuth2\Server\Exception\InvalidScopeException');
+        $this->setExpectedException('joshstar\OAuth2\Server\Exception\InvalidScopeException');
 
         $server->issueAccessToken();
     }
@@ -434,13 +434,13 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
         $server = new AuthorizationServer();
         $grant = new RefreshTokenGrant();
 
-        $clientStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ClientInterface');
+        $clientStorage = M::mock('joshstar\OAuth2\Server\Storage\ClientInterface');
         $clientStorage->shouldReceive('setServer');
         $clientStorage->shouldReceive('get')->andReturn(
             (new ClientEntity($server))->hydrate(['id' => 'testapp'])
         );
 
-        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('joshstar\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('setServer');
         $sessionStorage->shouldReceive('getScopes')->shouldReceive('getScopes')->andReturn([]);
         $sessionStorage->shouldReceive('associateScope');
@@ -448,7 +448,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
             (new SessionEntity($server))
         );
 
-        $accessTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AccessTokenInterface');
+        $accessTokenStorage = M::mock('joshstar\OAuth2\Server\Storage\AccessTokenInterface');
         $accessTokenStorage->shouldReceive('setServer');
         $accessTokenStorage->shouldReceive('get')->andReturn(
             (new AccessTokenEntity($server))
@@ -460,7 +460,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
         ]);
         $accessTokenStorage->shouldReceive('associateScope');
 
-        $refreshTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\RefreshTokenInterface');
+        $refreshTokenStorage = M::mock('joshstar\OAuth2\Server\Storage\RefreshTokenInterface');
         $refreshTokenStorage->shouldReceive('setServer');
         $refreshTokenStorage->shouldReceive('associateScope');
         $refreshTokenStorage->shouldReceive('delete');
@@ -469,7 +469,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
             (new RefreshTokenEntity($server))->setId('refresh_token')->setExpireTime(time() + 86400)
         );
 
-        $scopeStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ScopeInterface');
+        $scopeStorage = M::mock('joshstar\OAuth2\Server\Storage\ScopeInterface');
         $scopeStorage->shouldReceive('setServer');
         $scopeStorage->shouldReceive('get')->andReturn(
             (new ScopeEntity($server))->hydrate(['id' => 'foo'])
@@ -511,13 +511,13 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
         $grant = new RefreshTokenGrant();
         $grant->setRequireClientSecret(false);
 
-        $clientStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ClientInterface');
+        $clientStorage = M::mock('joshstar\OAuth2\Server\Storage\ClientInterface');
         $clientStorage->shouldReceive('setServer');
         $clientStorage->shouldReceive('get')->andReturn(
             (new ClientEntity($server))->hydrate(['id' => 'testapp'])
         );
 
-        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('joshstar\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('setServer');
         $sessionStorage->shouldReceive('getScopes')->shouldReceive('getScopes')->andReturn([]);
         $sessionStorage->shouldReceive('associateScope');
@@ -525,7 +525,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
             (new SessionEntity($server))
         );
 
-        $accessTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AccessTokenInterface');
+        $accessTokenStorage = M::mock('joshstar\OAuth2\Server\Storage\AccessTokenInterface');
         $accessTokenStorage->shouldReceive('setServer');
         $accessTokenStorage->shouldReceive('get')->andReturn(
             (new AccessTokenEntity($server))
@@ -537,7 +537,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
         ]);
         $accessTokenStorage->shouldReceive('associateScope');
 
-        $refreshTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\RefreshTokenInterface');
+        $refreshTokenStorage = M::mock('joshstar\OAuth2\Server\Storage\RefreshTokenInterface');
         $refreshTokenStorage->shouldReceive('setServer');
         $refreshTokenStorage->shouldReceive('associateScope');
         $refreshTokenStorage->shouldReceive('delete');
@@ -546,7 +546,7 @@ class RefreshTokenGrantTest extends \PHPUnit_Framework_TestCase
             (new RefreshTokenEntity($server))->setId('refresh_token')->setExpireTime(time() + 86400)
         );
 
-        $scopeStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ScopeInterface');
+        $scopeStorage = M::mock('joshstar\OAuth2\Server\Storage\ScopeInterface');
         $scopeStorage->shouldReceive('setServer');
         $scopeStorage->shouldReceive('get')->andReturn(
             (new ScopeEntity($server))->hydrate(['id' => 'foo'])

@@ -1,8 +1,8 @@
 <?php
 
-namespace LeagueForkTests\util;
+namespace joshstarTests\util;
 
-use LeagueFork\OAuth2\Server\Util\RedirectUri;
+use joshstar\OAuth2\Server\Util\RedirectUri;
 
 class RedirectUriTest extends \PHPUnit_Framework_TestCase
 {

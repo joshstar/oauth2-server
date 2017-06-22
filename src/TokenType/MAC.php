@@ -9,9 +9,9 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace LeagueFork\OAuth2\Server\TokenType;
+namespace joshstar\OAuth2\Server\TokenType;
 
-use LeagueFork\OAuth2\Server\Util\SecureKey;
+use joshstar\OAuth2\Server\Util\SecureKey;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 

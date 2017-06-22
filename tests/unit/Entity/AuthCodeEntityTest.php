@@ -1,20 +1,20 @@
 <?php
 
-namespace LeagueForkTests\Entity;
+namespace joshstarTests\Entity;
 
-use LeagueFork\OAuth2\Server\AuthorizationServer;
-use LeagueFork\OAuth2\Server\Entity\AuthCodeEntity;
-use LeagueFork\OAuth2\Server\Entity\ScopeEntity;
-use LeagueFork\OAuth2\Server\Entity\SessionEntity;
+use joshstar\OAuth2\Server\AuthorizationServer;
+use joshstar\OAuth2\Server\Entity\AuthCodeEntity;
+use joshstar\OAuth2\Server\Entity\ScopeEntity;
+use joshstar\OAuth2\Server\Entity\SessionEntity;
 use Mockery as M;
 
 class AuthCodeEntityTest extends \PHPUnit_Framework_TestCase
 {
     public function testSetGet()
     {
-        $server = M::mock('LeagueFork\OAuth2\Server\AbstractServer');
+        $server = M::mock('joshstar\OAuth2\Server\AbstractServer');
 
-        $session = M::mock('LeagueFork\OAuth2\Server\Entity\SessionEntity');
+        $session = M::mock('joshstar\OAuth2\Server\Entity\SessionEntity');
 
         $code = new AuthCodeEntity($server);
         $code->setRedirectUri('http://foo/bar');
@@ -23,16 +23,16 @@ class AuthCodeEntityTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('http://foo/bar', $code->getRedirectUri());
         $this->assertEquals('http://foo/bar?code=foobar', $code->generateRedirectUri());
-        $this->assertTrue($code->getSession() instanceof \LeagueFork\OAuth2\Server\Entity\SessionEntity);
+        $this->assertTrue($code->getSession() instanceof \joshstar\OAuth2\Server\Entity\SessionEntity);
     }
 
     public function testSave()
     {
-        $server = M::mock('LeagueFork\OAuth2\Server\AbstractServer');
+        $server = M::mock('joshstar\OAuth2\Server\AbstractServer');
         $server->shouldReceive('setAuthCodeStorage');
         $server->shouldReceive('setSessionStorage');
 
-        $authCodeStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AuthCodeInterface');
+        $authCodeStorage = M::mock('joshstar\OAuth2\Server\Storage\AuthCodeInterface');
         $authCodeStorage->shouldReceive('create');
         $authCodeStorage->shouldReceive('associateScope');
         $authCodeStorage->shouldReceive('setServer');
@@ -42,7 +42,7 @@ class AuthCodeEntityTest extends \PHPUnit_Framework_TestCase
 
         $server->shouldReceive('getAuthCodeStorage')->andReturn($authCodeStorage);
 
-        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('joshstar\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('getByAuthCode')->andReturn(
             (new SessionEntity($server))
         );
@@ -61,7 +61,7 @@ class AuthCodeEntityTest extends \PHPUnit_Framework_TestCase
     {
         $server = new AuthorizationServer();
 
-        $authCodeStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AuthCodeInterface');
+        $authCodeStorage = M::mock('joshstar\OAuth2\Server\Storage\AuthCodeInterface');
         $authCodeStorage->shouldReceive('delete');
         $authCodeStorage->shouldReceive('setServer');
 

@@ -9,9 +9,9 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace LeagueFork\OAuth2\Server\Storage;
+namespace joshstar\OAuth2\Server\Storage;
 
-use LeagueFork\OAuth2\Server\Entity\RefreshTokenEntity;
+use joshstar\OAuth2\Server\Entity\RefreshTokenEntity;
 
 /**
  * Refresh token interface
@@ -19,11 +19,11 @@ use LeagueFork\OAuth2\Server\Entity\RefreshTokenEntity;
 interface RefreshTokenInterface extends StorageInterface
 {
     /**
-     * Return a new instance of \LeagueFork\OAuth2\Server\Entity\RefreshTokenEntity
+     * Return a new instance of \joshstar\OAuth2\Server\Entity\RefreshTokenEntity
      *
      * @param string $token
      *
-     * @return \LeagueFork\OAuth2\Server\Entity\RefreshTokenEntity | null
+     * @return \joshstar\OAuth2\Server\Entity\RefreshTokenEntity | null
      */
     public function get($token);
 
@@ -34,14 +34,14 @@ interface RefreshTokenInterface extends StorageInterface
      * @param integer $expireTime
      * @param string  $accessToken
      *
-     * @return \LeagueFork\OAuth2\Server\Entity\RefreshTokenEntity
+     * @return \joshstar\OAuth2\Server\Entity\RefreshTokenEntity
      */
     public function create($token, $expireTime, $accessToken);
 
     /**
      * Delete the refresh token
      *
-     * @param \LeagueFork\OAuth2\Server\Entity\RefreshTokenEntity $token
+     * @param \joshstar\OAuth2\Server\Entity\RefreshTokenEntity $token
      *
      * @return void
      */

@@ -9,24 +9,24 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace LeagueFork\OAuth2\Server\Event;
+namespace joshstar\OAuth2\Server\Event;
 
-use LeagueFork\Event\AbstractEvent;
-use LeagueFork\OAuth2\Server\Entity\SessionEntity;
+use joshstar\Event\AbstractEvent;
+use joshstar\OAuth2\Server\Entity\SessionEntity;
 
 class SessionOwnerEvent extends AbstractEvent
 {
     /**
      * Session entity
      *
-     * @var \LeagueFork\OAuth2\Server\Entity\SessionEntity
+     * @var \joshstar\OAuth2\Server\Entity\SessionEntity
      */
     private $session;
 
     /**
      * Init the event with a session
      *
-     * @param \LeagueFork\OAuth2\Server\Entity\SessionEntity $session
+     * @param \joshstar\OAuth2\Server\Entity\SessionEntity $session
      */
     public function __construct(SessionEntity $session)
     {
@@ -46,7 +46,7 @@ class SessionOwnerEvent extends AbstractEvent
     /**
      * Return session
      *
-     * @return \LeagueFork\OAuth2\Server\Entity\SessionEntity
+     * @return \joshstar\OAuth2\Server\Entity\SessionEntity
      */
     public function getSession()
     {

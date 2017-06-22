@@ -9,7 +9,7 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace LeagueFork\OAuth2\Server\Entity;
+namespace joshstar\OAuth2\Server\Entity;
 
 /**
  * Access token entity class
@@ -19,7 +19,7 @@ class AccessTokenEntity extends AbstractTokenEntity
     /**
      * Get session
      *
-     * @return \LeagueFork\OAuth2\Server\Entity\SessionEntity
+     * @return \joshstar\OAuth2\Server\Entity\SessionEntity
      */
     public function getSession()
     {
@@ -51,7 +51,7 @@ class AccessTokenEntity extends AbstractTokenEntity
     /**
      * Return all scopes associated with the access token
      *
-     * @return \LeagueFork\OAuth2\Server\Entity\ScopeEntity[]
+     * @return \joshstar\OAuth2\Server\Entity\ScopeEntity[]
      */
     public function getScopes()
     {

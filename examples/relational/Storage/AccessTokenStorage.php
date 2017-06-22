@@ -3,10 +3,10 @@
 namespace RelationalExample\Storage;
 
 use Illuminate\Database\Capsule\Manager as Capsule;
-use LeagueFork\OAuth2\Server\Entity\AccessTokenEntity;
-use LeagueFork\OAuth2\Server\Entity\ScopeEntity;
-use LeagueFork\OAuth2\Server\Storage\AbstractStorage;
-use LeagueFork\OAuth2\Server\Storage\AccessTokenInterface;
+use joshstar\OAuth2\Server\Entity\AccessTokenEntity;
+use joshstar\OAuth2\Server\Entity\ScopeEntity;
+use joshstar\OAuth2\Server\Storage\AbstractStorage;
+use joshstar\OAuth2\Server\Storage\AccessTokenInterface;
 
 class AccessTokenStorage extends AbstractStorage implements AccessTokenInterface
 {

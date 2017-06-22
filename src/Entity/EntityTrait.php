@@ -9,7 +9,7 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace LeagueFork\OAuth2\Server\Entity;
+namespace joshstar\OAuth2\Server\Entity;
 
 trait EntityTrait
 {

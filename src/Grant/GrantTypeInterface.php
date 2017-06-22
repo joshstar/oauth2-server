@@ -9,9 +9,9 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace LeagueFork\OAuth2\Server\Grant;
+namespace joshstar\OAuth2\Server\Grant;
 
-use LeagueFork\OAuth2\Server\AuthorizationServer;
+use joshstar\OAuth2\Server\AuthorizationServer;
 
 /**
  * Grant type interface
@@ -44,7 +44,7 @@ interface GrantTypeInterface
     /**
      * Inject the authorization server into the grant
      *
-     * @param \LeagueFork\OAuth2\Server\AuthorizationServer $server The authorization server instance
+     * @param \joshstar\OAuth2\Server\AuthorizationServer $server The authorization server instance
      *
      * @return self
      */

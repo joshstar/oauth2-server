@@ -9,7 +9,7 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace LeagueFork\OAuth2\Server\Storage;
+namespace joshstar\OAuth2\Server\Storage;
 
 
 /**

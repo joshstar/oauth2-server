@@ -1,22 +1,22 @@
 <?php
 
-namespace LeagueForkTests\Entity;
+namespace joshstarTests\Entity;
 
-use LeagueFork\OAuth2\Server\AuthorizationServer;
-use LeagueFork\OAuth2\Server\Entity\AccessTokenEntity;
-use LeagueFork\OAuth2\Server\Entity\ClientEntity;
-use LeagueFork\OAuth2\Server\Entity\RefreshTokenEntity;
-use LeagueFork\OAuth2\Server\Entity\ScopeEntity;
-use LeagueFork\OAuth2\Server\Entity\SessionEntity;
+use joshstar\OAuth2\Server\AuthorizationServer;
+use joshstar\OAuth2\Server\Entity\AccessTokenEntity;
+use joshstar\OAuth2\Server\Entity\ClientEntity;
+use joshstar\OAuth2\Server\Entity\RefreshTokenEntity;
+use joshstar\OAuth2\Server\Entity\ScopeEntity;
+use joshstar\OAuth2\Server\Entity\SessionEntity;
 use Mockery as M;
 
 class SessionEntityTest extends \PHPUnit_Framework_TestCase
 {
     public function testSetGet()
     {
-        $emitter = M::mock('LeagueFork\Event\Emitter');
+        $emitter = M::mock('joshstar\Event\Emitter');
         $emitter->shouldReceive('emit');
-        $server = M::mock('LeagueFork\OAuth2\Server\AbstractServer');
+        $server = M::mock('joshstar\OAuth2\Server\AbstractServer');
         $server->shouldReceive('setEventEmitter');
         $server->shouldReceive('getEventEmitter')->andReturn($emitter);
         $server->setEventEmitter($emitter);
@@ -51,10 +51,10 @@ class SessionEntityTest extends \PHPUnit_Framework_TestCase
 
     public function testFormatScopes()
     {
-        $server = M::mock('LeagueFork\OAuth2\Server\AbstractServer');
+        $server = M::mock('joshstar\OAuth2\Server\AbstractServer');
 
         $entity = new SessionEntity($server);
-        $reflectedEntity = new \ReflectionClass('LeagueFork\OAuth2\Server\Entity\SessionEntity');
+        $reflectedEntity = new \ReflectionClass('joshstar\OAuth2\Server\Entity\SessionEntity');
         $method = $reflectedEntity->getMethod('formatScopes');
         $method->setAccessible(true);
 
@@ -73,17 +73,17 @@ class SessionEntityTest extends \PHPUnit_Framework_TestCase
 
     public function testGetScopes()
     {
-        $server = M::mock('LeagueFork\OAuth2\Server\AuthorizationServer');
+        $server = M::mock('joshstar\OAuth2\Server\AuthorizationServer');
         $server->shouldReceive('setAccessTokenStorage');
         $server->shouldReceive('setSessionStorage');
 
-        $accessTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AccessTokenInterface');
+        $accessTokenStorage = M::mock('joshstar\OAuth2\Server\Storage\AccessTokenInterface');
         $accessTokenStorage->shouldReceive('setServer');
         $server->setAccessTokenStorage($accessTokenStorage);
 
         $server->shouldReceive('getAccessTokenStorage')->andReturn($accessTokenStorage);
 
-        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('joshstar\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('getScopes')->andReturn(
             []
         );
@@ -98,17 +98,17 @@ class SessionEntityTest extends \PHPUnit_Framework_TestCase
 
     public function testHasScopes()
     {
-        $server = M::mock('LeagueFork\OAuth2\Server\AuthorizationServer');
+        $server = M::mock('joshstar\OAuth2\Server\AuthorizationServer');
         $server->shouldReceive('setAccessTokenStorage');
         $server->shouldReceive('setSessionStorage');
 
-        $accessTokenStorage = M::mock('LeagueFork\OAuth2\Server\Storage\AccessTokenInterface');
+        $accessTokenStorage = M::mock('joshstar\OAuth2\Server\Storage\AccessTokenInterface');
         $accessTokenStorage->shouldReceive('setServer');
         $server->setAccessTokenStorage($accessTokenStorage);
 
         $server->shouldReceive('getAccessTokenStorage')->andReturn($accessTokenStorage);
 
-        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('joshstar\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('getScopes')->andReturn(
             []
         );
@@ -123,11 +123,11 @@ class SessionEntityTest extends \PHPUnit_Framework_TestCase
 
     public function testSave()
     {
-        $server = M::mock('LeagueFork\OAuth2\Server\AuthorizationServer');
+        $server = M::mock('joshstar\OAuth2\Server\AuthorizationServer');
         $server->shouldReceive('setSessionStorage');
         $server->shouldReceive('setClientStorage');
 
-        $sessionStorage = M::mock('LeagueFork\OAuth2\Server\Storage\SessionInterface');
+        $sessionStorage = M::mock('joshstar\OAuth2\Server\Storage\SessionInterface');
         $sessionStorage->shouldReceive('create');
         $sessionStorage->shouldReceive('associateScope');
         $sessionStorage->shouldReceive('setServer');
@@ -137,7 +137,7 @@ class SessionEntityTest extends \PHPUnit_Framework_TestCase
 
         $server->shouldReceive('getSessionStorage')->andReturn($sessionStorage);
 
-        $clientStorage = M::mock('LeagueFork\OAuth2\Server\Storage\ClientInterface');
+        $clientStorage = M::mock('joshstar\OAuth2\Server\Storage\ClientInterface');
         $clientStorage->shouldReceive('getBySession')->andReturn(
             (new ClientEntity($server))->hydrate(['id' => 'foo'])
         );

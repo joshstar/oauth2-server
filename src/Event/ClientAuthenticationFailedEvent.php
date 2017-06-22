@@ -9,9 +9,9 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace LeagueFork\OAuth2\Server\Event;
+namespace joshstar\OAuth2\Server\Event;
 
-use LeagueFork\Event\AbstractEvent;
+use joshstar\Event\AbstractEvent;
 use Symfony\Component\HttpFoundation\Request;
 
 class ClientAuthenticationFailedEvent extends AbstractEvent

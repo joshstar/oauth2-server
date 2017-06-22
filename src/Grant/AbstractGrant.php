@@ -9,12 +9,12 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace LeagueFork\OAuth2\Server\Grant;
+namespace joshstar\OAuth2\Server\Grant;
 
-use LeagueFork\OAuth2\Server\AuthorizationServer;
-use LeagueFork\OAuth2\Server\Entity\ClientEntity;
-use LeagueFork\OAuth2\Server\Entity\ScopeEntity;
-use LeagueFork\OAuth2\Server\Exception;
+use joshstar\OAuth2\Server\AuthorizationServer;
+use joshstar\OAuth2\Server\Entity\ClientEntity;
+use joshstar\OAuth2\Server\Entity\ScopeEntity;
+use joshstar\OAuth2\Server\Exception;
 
 /**
  * Abstract grant class
@@ -45,7 +45,7 @@ abstract class AbstractGrant implements GrantTypeInterface
     /**
      * AuthServer instance
      *
-     * @var \LeagueFork\OAuth2\Server\AuthorizationServer
+     * @var \joshstar\OAuth2\Server\AuthorizationServer
      */
     protected $server;
 
@@ -124,12 +124,12 @@ abstract class AbstractGrant implements GrantTypeInterface
      * Given a list of scopes, validate them and return an array of Scope entities
      *
      * @param string                                    $scopeParam  A string of scopes (e.g. "profile email birthday")
-     * @param \LeagueFork\OAuth2\Server\Entity\ClientEntity $client      Client entity
+     * @param \joshstar\OAuth2\Server\Entity\ClientEntity $client      Client entity
      * @param string|null                               $redirectUri The redirect URI to return the user to
      *
-     * @return \LeagueFork\OAuth2\Server\Entity\ScopeEntity[]
+     * @return \joshstar\OAuth2\Server\Entity\ScopeEntity[]
      *
-     * @throws \LeagueFork\OAuth2\Server\Exception\InvalidScopeException If scope is invalid, or no scopes passed when required
+     * @throws \joshstar\OAuth2\Server\Exception\InvalidScopeException If scope is invalid, or no scopes passed when required
      * @throws
      */
     public function validateScopes($scopeParam = '', ClientEntity $client, $redirectUri = null)
@@ -179,7 +179,7 @@ abstract class AbstractGrant implements GrantTypeInterface
     /**
      * Format the local scopes array
      *
-     * @param  \LeagueFork\OAuth2\Server\Entity\ScopeEntity[]
+     * @param  \joshstar\OAuth2\Server\Entity\ScopeEntity[]
      *
      * @return array
      */

@@ -1,8 +1,8 @@
 <?php
 
-namespace LeagueForkTests\Stubs;
+namespace joshstarTests\Stubs;
 
-class StubAbstractStorage extends \LeagueFork\OAuth2\Server\Storage\AbstractStorage
+class StubAbstractStorage extends \joshstar\OAuth2\Server\Storage\AbstractStorage
 {
     //
 }

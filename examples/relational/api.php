@@ -1,6 +1,6 @@
 <?php
 
-use LeagueFork\OAuth2\Server\ResourceServer;
+use joshstar\OAuth2\Server\ResourceServer;
 use Orno\Http\Exception\NotFoundException;
 use Orno\Http\Request;
 use Orno\Http\Response;
@@ -110,7 +110,7 @@ try {
     // A failed response
     $response = $e->getJsonResponse();
     $response->setContent(json_encode(['status_code' => $e->getStatusCode(), 'message' => $e->getMessage()]));
-} catch (\LeagueFork\OAuth2\Server\Exception\OAuthException $e) {
+} catch (\joshstar\OAuth2\Server\Exception\OAuthException $e) {
     $response = new Response(json_encode([
         'error'     =>  $e->errorType,
         'message'   =>  $e->getMessage(),

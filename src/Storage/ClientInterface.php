@@ -9,9 +9,9 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace LeagueFork\OAuth2\Server\Storage;
+namespace joshstar\OAuth2\Server\Storage;
 
-use LeagueFork\OAuth2\Server\Entity\SessionEntity;
+use joshstar\OAuth2\Server\Entity\SessionEntity;
 
 /**
  * Client storage interface
@@ -26,16 +26,16 @@ interface ClientInterface extends StorageInterface
      * @param string $redirectUri  The client's redirect URI (default = "null")
      * @param string $grantType    The grant type used (default = "null")
      *
-     * @return \LeagueFork\OAuth2\Server\Entity\ClientEntity | null
+     * @return \joshstar\OAuth2\Server\Entity\ClientEntity | null
      */
     public function get($clientId, $clientSecret = null, $redirectUri = null, $grantType = null);
 
     /**
      * Get the client associated with a session
      *
-     * @param \LeagueFork\OAuth2\Server\Entity\SessionEntity $session The session
+     * @param \joshstar\OAuth2\Server\Entity\SessionEntity $session The session
      *
-     * @return \LeagueFork\OAuth2\Server\Entity\ClientEntity | null
+     * @return \joshstar\OAuth2\Server\Entity\ClientEntity | null
      */
     public function getBySession(SessionEntity $session);
 }

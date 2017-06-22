@@ -1,15 +1,15 @@
 <?php
 
-namespace LeagueForkTests\Entity;
+namespace joshstarTests\Entity;
 
-use LeagueFork\OAuth2\Server\Entity\ScopeEntity;
+use joshstar\OAuth2\Server\Entity\ScopeEntity;
 use Mockery as M;
 
 class ScopeEntityTest extends \PHPUnit_Framework_TestCase
 {
     public function testSetGet()
     {
-        $server = M::mock('LeagueFork\OAuth2\Server\AbstractServer');
+        $server = M::mock('joshstar\OAuth2\Server\AbstractServer');
         $scope = (new ScopeEntity($server))->hydrate([
             'id' => 'foobar',
             'description' => 'barfoo',

@@ -9,17 +9,17 @@
  * @link        https://github.com/thephpleague/oauth2-server
  */
 
-namespace LeagueFork\OAuth2\Server;
+namespace joshstar\OAuth2\Server;
 
-use LeagueFork\Event\Emitter;
-use LeagueFork\OAuth2\Server\Storage\AccessTokenInterface;
-use LeagueFork\OAuth2\Server\Storage\AuthCodeInterface;
-use LeagueFork\OAuth2\Server\Storage\ClientInterface;
-use LeagueFork\OAuth2\Server\Storage\MacTokenInterface;
-use LeagueFork\OAuth2\Server\Storage\RefreshTokenInterface;
-use LeagueFork\OAuth2\Server\Storage\ScopeInterface;
-use LeagueFork\OAuth2\Server\Storage\SessionInterface;
-use LeagueFork\OAuth2\Server\TokenType\TokenTypeInterface;
+use joshstar\Event\Emitter;
+use joshstar\OAuth2\Server\Storage\AccessTokenInterface;
+use joshstar\OAuth2\Server\Storage\AuthCodeInterface;
+use joshstar\OAuth2\Server\Storage\ClientInterface;
+use joshstar\OAuth2\Server\Storage\MacTokenInterface;
+use joshstar\OAuth2\Server\Storage\RefreshTokenInterface;
+use joshstar\OAuth2\Server\Storage\ScopeInterface;
+use joshstar\OAuth2\Server\Storage\SessionInterface;
+use joshstar\OAuth2\Server\TokenType\TokenTypeInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -37,61 +37,61 @@ abstract class AbstractServer
     /**
      * Session storage
      *
-     * @var \LeagueFork\OAuth2\Server\Storage\SessionInterface
+     * @var \joshstar\OAuth2\Server\Storage\SessionInterface
      */
     protected $sessionStorage;
 
     /**
      * Access token storage
      *
-     * @var \LeagueFork\OAuth2\Server\Storage\AccessTokenInterface
+     * @var \joshstar\OAuth2\Server\Storage\AccessTokenInterface
      */
     protected $accessTokenStorage;
 
     /**
      * Refresh token storage
      *
-     * @var \LeagueFork\OAuth2\Server\Storage\RefreshTokenInterface
+     * @var \joshstar\OAuth2\Server\Storage\RefreshTokenInterface
      */
     protected $refreshTokenStorage;
 
     /**
      * Auth code storage
      *
-     * @var \LeagueFork\OAuth2\Server\Storage\AuthCodeInterface
+     * @var \joshstar\OAuth2\Server\Storage\AuthCodeInterface
      */
     protected $authCodeStorage;
 
     /**
      * Scope storage
      *
-     * @var \LeagueFork\OAuth2\Server\Storage\ScopeInterface
+     * @var \joshstar\OAuth2\Server\Storage\ScopeInterface
      */
     protected $scopeStorage;
 
     /**
      * Client storage
      *
-     * @var \LeagueFork\OAuth2\Server\Storage\ClientInterface
+     * @var \joshstar\OAuth2\Server\Storage\ClientInterface
      */
     protected $clientStorage;
 
     /**
-     * @var \LeagueFork\OAuth2\Server\Storage\MacTokenInterface
+     * @var \joshstar\OAuth2\Server\Storage\MacTokenInterface
      */
     protected $macStorage;
 
     /**
      * Token type
      *
-     * @var \LeagueFork\OAuth2\Server\TokenType\TokenTypeInterface
+     * @var \joshstar\OAuth2\Server\TokenType\TokenTypeInterface
      */
     protected $tokenType;
 
     /**
      * Event emitter
      *
-     * @var \LeagueFork\Event\Emitter
+     * @var \joshstar\Event\Emitter
      */
     protected $eventEmitter;
 
@@ -132,7 +132,7 @@ abstract class AbstractServer
     /**
      * Returns the event emitter
      *
-     * @return \LeagueFork\Event\Emitter
+     * @return \joshstar\Event\Emitter
      */
     public function getEventEmitter()
     {
@@ -170,7 +170,7 @@ abstract class AbstractServer
     /**
      * Set the client storage
      *
-     * @param \LeagueFork\OAuth2\Server\Storage\ClientInterface $storage
+     * @param \joshstar\OAuth2\Server\Storage\ClientInterface $storage
      *
      * @return self
      */
@@ -185,7 +185,7 @@ abstract class AbstractServer
     /**
      * Set the session storage
      *
-     * @param \LeagueFork\OAuth2\Server\Storage\SessionInterface $storage
+     * @param \joshstar\OAuth2\Server\Storage\SessionInterface $storage
      *
      * @return self
      */
@@ -200,7 +200,7 @@ abstract class AbstractServer
     /**
      * Set the access token storage
      *
-     * @param \LeagueFork\OAuth2\Server\Storage\AccessTokenInterface $storage
+     * @param \joshstar\OAuth2\Server\Storage\AccessTokenInterface $storage
      *
      * @return self
      */
@@ -215,7 +215,7 @@ abstract class AbstractServer
     /**
      * Set the refresh token storage
      *
-     * @param \LeagueFork\OAuth2\Server\Storage\RefreshTokenInterface $storage
+     * @param \joshstar\OAuth2\Server\Storage\RefreshTokenInterface $storage
      *
      * @return self
      */
@@ -230,7 +230,7 @@ abstract class AbstractServer
     /**
      * Set the auth code storage
      *
-     * @param \LeagueFork\OAuth2\Server\Storage\AuthCodeInterface $storage
+     * @param \joshstar\OAuth2\Server\Storage\AuthCodeInterface $storage
      *
      * @return self
      */
@@ -245,7 +245,7 @@ abstract class AbstractServer
     /**
      * Set the scope storage
      *
-     * @param \LeagueFork\OAuth2\Server\Storage\ScopeInterface $storage
+     * @param \joshstar\OAuth2\Server\Storage\ScopeInterface $storage
      *
      * @return self
      */
@@ -260,7 +260,7 @@ abstract class AbstractServer
     /**
      * Return the client storage
      *
-     * @return \LeagueFork\OAuth2\Server\Storage\ClientInterface
+     * @return \joshstar\OAuth2\Server\Storage\ClientInterface
      */
     public function getClientStorage()
     {
@@ -270,7 +270,7 @@ abstract class AbstractServer
     /**
      * Return the scope storage
      *
-     * @return \LeagueFork\OAuth2\Server\Storage\ScopeInterface
+     * @return \joshstar\OAuth2\Server\Storage\ScopeInterface
      */
     public function getScopeStorage()
     {
@@ -280,7 +280,7 @@ abstract class AbstractServer
     /**
      * Return the session storage
      *
-     * @return \LeagueFork\OAuth2\Server\Storage\SessionInterface
+     * @return \joshstar\OAuth2\Server\Storage\SessionInterface
      */
     public function getSessionStorage()
     {
@@ -290,7 +290,7 @@ abstract class AbstractServer
     /**
      * Return the refresh token storage
      *
-     * @return \LeagueFork\OAuth2\Server\Storage\RefreshTokenInterface
+     * @return \joshstar\OAuth2\Server\Storage\RefreshTokenInterface
      */
     public function getRefreshTokenStorage()
     {
@@ -300,7 +300,7 @@ abstract class AbstractServer
     /**
      * Return the access token storage
      *
-     * @return \LeagueFork\OAuth2\Server\Storage\AccessTokenInterface
+     * @return \joshstar\OAuth2\Server\Storage\AccessTokenInterface
      */
     public function getAccessTokenStorage()
     {
@@ -310,7 +310,7 @@ abstract class AbstractServer
     /**
      * Return the auth code storage
      *
-     * @return \LeagueFork\OAuth2\Server\Storage\AuthCodeInterface
+     * @return \joshstar\OAuth2\Server\Storage\AuthCodeInterface
      */
     public function getAuthCodeStorage()
     {
